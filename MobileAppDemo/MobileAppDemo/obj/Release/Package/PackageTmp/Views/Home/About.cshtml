@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "About";
+   // Layout = null;
+}
+
+@*<html manifest="~Views/Home/Manifest">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/onoffline.css")
+    @Styles.Render("~/Content/jquery.mobile-1.4.2.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerymobile")
+    @Scripts.Render("~/Scripts/jqt.js")
+    @Scripts.Render("~/Scripts/zepto.min.js")
+    @Scripts.Render("~/Scripts/lawnchair.js")*@
+
+@*    <script>
+        $(document).on("mobileinit", function () {
+            $.mobile.ajaxEnabled = false;
+        });
+    </script>*@
+    <script>
+        $(document).ready(function () {
+            var status = $(".onlineStatus");
+            if (isOnline()) {
+                status.text("Online");
+                status.
+                    removeClass("offline").
+                    addClass("online");
+            } else {
+                status.text("Offline");
+                status.
+                    removeClass("online").
+                    addClass("offline");
+            }
+        });
+
+        function isOnline() {
+            return navigator.onLine;
+        }
+    </script>
+
+
+</head>
+<body>
+    <h2>About</h2>
+    <div class="onlineStatus"></div>
+
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Navigation</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Widgets", "Widgets", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    </ul>
+    <p>
+        @ViewBag.Message
+    </p>
+@*</body>
+</html>*@

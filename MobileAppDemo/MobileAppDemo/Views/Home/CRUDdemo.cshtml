@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "CRUD Demo";
+}
+<script>
+    $(document).on('ready', function () {
+
+        $('.item').click(function () {
+            alert("clicked: " + $(this).attr('href'));
+         
+        });
+    });
+
+</script>
+
+
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+    <li >@Html.ActionLink("Customer Demo", "Customers", "Home")</li>
+    <li >@Html.ActionLink("PDF Demo", "PDFdemo", "Home")</li>
+    <li >@Html.ActionLink("About", "About", "Home")</li>
+     <li>@Html.ActionLink("Widgets", "Widgets", "Home")</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+</ul>
+
+<h2>CRUD Demo</h2>
+<ul id="templates" data-role="listview" data-inset="true">
+     @foreach (var item in Model){
+               
+    <li class="item" href=@item.ID><a>@item.type</a></li>
+     }
+  </ul>
+
+

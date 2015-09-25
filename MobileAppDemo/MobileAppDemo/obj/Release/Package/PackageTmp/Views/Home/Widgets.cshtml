@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Widgets";
+   // Layout = null;
+}
+@*<html manifest="~Views/Home/Manifest">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/onoffline.css")
+    @Styles.Render("~/Content/jquery.mobile-1.4.2.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerymobile")
+    @Scripts.Render("~/Scripts/jqt.js")
+    @Scripts.Render("~/Scripts/zepto.min.js")
+    @Scripts.Render("~/Scripts/lawnchair.js")
+    </head>
+
+    <body>*@
+<h2>Widgets</h2>
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("About", "About", "Home")</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+</ul>
+<p>
+     @ViewBag.Message
+</p>
+<br />
+<h2>Switches</h2>
+<form>
+    <label for="flip-checkbox-1">Flip toggle switch checkbox:</label>
+    <input type="checkbox" data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1">
+</form>
+<form>
+    <label for="flip-2">Flip toggle switch:</label>
+    <select name="flip-2" id="flip-2" data-role="flipswitch" data-theme="b">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select>
+</form>
+<br />
+<h2>Buttons</h2>
+<input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="Input">
+<div class="ui-input-btn ui-btn ui-btn-b ui-icon-delete ui-btn-icon-left ui-shadow-icon">
+    Enhanced
+    <input type="button" data-enhanced="true" value="Enhanced">
+</div>
+
+<h2>CheckBoxes</h2>
+<form>
+    <fieldset data-role="controlgroup">
+        <legend>Vertical:</legend>
+        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+        <label for="checkbox-v-2a">One</label>
+        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+        <label for="checkbox-v-2b">Two</label>
+        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+        <label for="checkbox-v-2c">Three</label>
+    </fieldset>
+</form>
+@*</body>
+
+</html>*@

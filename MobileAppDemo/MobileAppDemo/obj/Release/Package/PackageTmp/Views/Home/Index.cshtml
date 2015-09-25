@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "Demo App Home";
+   // Layout = null;
+}
+
+@*<html manifest="home/manifest">
+<head>
+     <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+       
+       @Styles.Render("~/Content/onoffline.css")
+      @Styles.Render("~/Content/jquery.mobile-1.4.2.css")
+        @Scripts.Render("~/bundles/modernizr")
+          @Scripts.Render("~/bundles/jquery")
+       @Scripts.Render("~/bundles/jquerymobile")
+        @Scripts.Render("~/Scripts/jqt.js")
+        @Scripts.Render("~/Scripts/zepto.min.js")
+       @Scripts.Render("~/Scripts/lawnchair.js")*@
+       
+   
+      <script>
+          $(document).on("mobileinit", function () {
+              $.mobile.ajaxEnabled = false;
+          });
+        </script>
+<script>
+    $(document).ready(function () {
+        var me = {
+            key: 'input',
+            inputVal: 'default'
+        };
+
+        var status = $(".onlineStatus");
+        if (isOnline()) {
+            status.text("Online");
+            status.
+                removeClass("offline").
+                addClass("online");
+        } else {
+            status.text("Offline");
+            status.
+                removeClass("online").
+                addClass("offline");
+        }
+       
+
+        var store = new Lawnchair({ name: 'testing' }, function (store) {
+
+           
+            // Create an object
+                       // Save it
+         //   store.save(me);
+           
+            // Access it later... Yes even after a page refresh!
+            store.get('input', function (me) {
+                try{
+                    alert("retrieved: " + me.inputVal);
+                }
+                catch (ex) {
+                }
+            });
+        });
+
+        $("#saveText").click(function () {
+           
+            me.inputVal = $("#inputText").val();
+            if (me.inputVal !== 'undefined') {
+                alert("saved: " + me.inputVal);
+            }
+            store.save(me);
+        });
+
+        $(document).on("vclick", "#Reset", function () {
+            location.reload();
+        });
+
+        $(document).on("vclick", "#Submit", function () {
+            //alert("Creating new PDF");
+           
+             var values = $("#templateList").val() + ";" + $("#optionList").val() + ";" + $("#inputText").val();
+             var valCheck = values.split(';');
+             if ((valCheck[0] == null || valCheck[0] == "") || (valCheck[1] == null || valCheck[1] == "") || (valCheck[2] == 'undefined' || valCheck[2] == "")) {
+                 alert("Please select a dropdown value and enter a name for the file.");
+             }else{
+            //submit to pdf creator
+                $.ajax({
+                    url: '@Url.Action("ajaxCreateNewPDF", "Home")',
+                    type: "post",
+                    dataType: "json",
+                    async: false,
+                    data: { items: values },
+                    success: function (result) {
+                        //alert(result);
+                        var retVals = result.split(';');
+                        $(".ui-grid-c").append('<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">' + retVals[0] + '</div></div>' +
+                                                '<div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">' + retVals[1] +'</div></div>' +
+                                                 '<div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px">' + retVals[2] +'</div></div>' +
+                                                 '<div class="ui-block-d"><div class="ui-bar ui-bar-a" style="height:60px"><button class="dbutton ui-btn ui-btn-inline" id="' + retVals[0] + '">Download</button></div></div>');
+                    },
+                    error: function () { }
+                });
+            }
+        });
+
+        $('body').on('click', '.dbutton', function () {
+      
+            var filename = $(this).attr('id');
+           // alert("button clicked, filename:" + filename);
+            var $url = "Home/Download?fileName=" + escape(filename);
+            location.href = $url;
+
+            //need to clear bindings to the button or will fire multiple times
+            $('body').unbind('click', '.downloadButton');
+        });
+
+        //test functionality code
+        function isOnline() {
+            return navigator.onLine;
+        }
+
+    });
+</script>
+    </head>
+    <body>
+      <div data-role="body" data-theme="b"></div>
+    <h2>@ViewBag.Message</h2>
+
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+    <li>@Html.ActionLink("About", "About", "Home")</li>
+     <li>@Html.ActionLink("Widgets", "Widgets", "Home")</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+</ul>
+
+<div>
+  <h3>Select a PDF Template: </h3>
+@Html.DropDownList("Templates", ViewData["TemplateItems"] as List<SelectListItem>,"-Select Template Type-", new { id = "templateList"})
+ </div>
+<div>
+  <h3>Select Some Type here: </h3>
+@Html.DropDownList("Options", ViewData["OptionItems"] as List<SelectListItem>,"-Select Option-", new { id = "optionList"})
+ </div>
+
+<div>
+    <h3>Enter Name For PDF: </h3>
+   <input type="text" data-inline="true" id="inputText">
+   <input type="button" data-theme="a" data-inline="true" value="save" id="saveText">
+    
+</div>
+<br />
+<fieldset class="ui-grid-a">
+    <div class="ui-block-a"><input type="submit" value="Create PDF" data-theme="a" id="Submit"></div>
+    <div class="ui-block-b"><input type="reset" value="Reset" data-theme="b" id="Reset"></div>
+</fieldset>
+
+<h2>Generated PDFs</h2>
+<div class="ui-grid-c">
+    <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px; background-color:cornflowerblue">Document Name</div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px; background-color:cornflowerblue">Template Type</div></div>
+    <div class="ui-block-c"><div class="ui-bar ui-bar-a" style="height:60px; background-color:cornflowerblue">Option Type</div></div>
+    <div class="ui-block-d"><div class="ui-bar ui-bar-a" style="height:60px; background-color:cornflowerblue">Link</div></div>
+</div>
+
+<div class="onlineStatus"></div>
+
+  @*      </body>
+ 
+    </html>*@
+<!-- /grid-b -->
+
+@*<h3>Generated PDFs</h3>
+<div>
+    <table>
+        <thead></thead>
+    <div class="ui-grid-a">
+    <div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px">Block A</div></div>
+    <div class="ui-block-b"><div class="ui-bar ui-bar-a" style="height:60px">Block B</div></div>
+        
+</div><!-- /grid-a -->
+        </table>
+</div>*@
+

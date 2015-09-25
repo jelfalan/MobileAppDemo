@@ -1,0 +1,83 @@
+﻿@using System.Web.Optimization
+@{
+    HttpContext.Current.Response.ContentType = "text/cache-manifest";
+}CACHE MANIFEST
+# version 1
+      
+CACHE:
+# pages
+@Url.Action("Customers", "Home")
+@Url.Action("CRUDdemo", "Home")
+@Url.Action("PDFdemo", "Home")
+@Url.Action("About", "Home")
+@Url.Action("Widgets", "Home")
+@Url.Action("Contact", "Home")
+
+
+@Url.Content("~/Content/css")
+@Url.Content("~/Content/mobileCss")
+
+
+@*@Url.Content("~/Content/onlineStatus.css")*@
+
+
+@Url.Content("~/bundles/modernizr")
+@Url.Content("~/bundles/jquery")
+@Url.Content("~/bundles/jquerymobile")
+
+
+@Url.Content("~/Scripts/jqt.min.js")
+@Url.Content("~/Scripts/lawnchair.js")
+@Url.Content("~/Scripts/zepto.min.js")
+
+
+@Url.Content("~/Scripts/knockout-3.3.0.js")
+@Url.Content("~/Scripts/CustomerViewModel.js")
+
+@*@Url.Content("~/Scripts/angular.min.js")
+@Url.Content("~/Scripts/localforage.js")
+@Url.Content("~/Scripts/angular-localForage.js")*@
+
+
+@*@Url.Content("~/Scripts/offline.js")*@
+
+@Url.Content("~/Content/jquery.mobile-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.external-png-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.icons-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.inline-png-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.inline-svg-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.structure-1.4.2.css")
+@Url.Content("~/Content/jquery.mobile.theme-1.4.2.css")
+
+
+@*working*@
+
+@*/Content/css
+/Content/mobileCss
+
+/Content/onoffline.css
+
+/bundles/modernizr
+/bundles/jquery
+/bundles/jquerymobile
+
+
+/Content/jquery.mobile-1.4.2.css
+/Content/jquery.mobile.external-png-1.4.2.css
+/Content/jquery.mobile.icons-1.4.2.css
+/Content/jquery.mobile.inline-png-1.4.2.css
+/Content/jquery.mobile.inline-svg-1.4.2.css
+/Content/jquery.mobile.structure-1.4.2.css
+/Content/jquery.mobile.theme-1.4.2.css*@
+
+
+      
+FALLBACK:
+~/Views/error.html
+      
+NETWORK:
+*
+      
+@{
+  Layout = null;
+}

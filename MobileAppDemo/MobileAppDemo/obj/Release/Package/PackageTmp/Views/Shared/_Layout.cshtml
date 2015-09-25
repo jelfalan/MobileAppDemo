@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en" manifest="/Home/Manifest">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   
+@*   
+                    <script type="text/javascript" src="@Url.Content("~Content/Scripts/jquery.1.11.2.min.js")"></script>
+            <script type="text/javascript" src="@Url.Content("~Content/Scripts/jquery.mobile-1.4.5.min.js")"></script>*@
+ 
+
+         @Styles.Render("~/Content/mobileCss", "~/Content/css")
+         @Styles.Render("~/Content/onoffline.css")
+
+        @Scripts.Render("~/bundles/modernizr")
+           @Scripts.Render("~/bundles/jquery")
+        <script>
+            $(document).on("mobileinit", function () {
+                $.mobile.ajaxEnabled = false;
+            });
+        </script>
+        @Scripts.Render("~/bundles/jquerymobile")
+        @Scripts.Render("~/Scripts/jqt.js")
+        @Scripts.Render("~/Scripts/zepto.min.js")
+        @Scripts.Render("~/Scripts/lawnchair.js")
+      
+        
+
+        @RenderSection("scripts", required: false)
+    </head>
+    <body>
+        <div data-role="page" data-theme="b">
+            <div data-role="header">
+                @if (IsSectionDefined("Header")) {
+                    @RenderSection("Header")
+                } else {
+                    <h1>@ViewBag.Title</h1>
+                    @Html.Partial("_LoginPartial")
+                }
+            </div>
+            <div data-role="content">
+                @RenderBody()
+            </div>
+        </div>
+
+     
+    </body>
+</html>

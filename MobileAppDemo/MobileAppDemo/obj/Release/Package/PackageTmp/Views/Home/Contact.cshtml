@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Contact";
+ //  Layout = null;
+}
+@*<html manifest="~Views/Home/Manifest">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/onoffline.css")
+    @Styles.Render("~/Content/jquery.mobile-1.4.2.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerymobile")
+    @Scripts.Render("~/Scripts/jqt.js")
+    @Scripts.Render("~/Scripts/zepto.min.js")
+    @Scripts.Render("~/Scripts/lawnchair.js")
+    </head>
+
+    <body>*@
+<h2>Contact</h2>
+
+
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Navigation</li>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+     <li>@Html.ActionLink("Widgets", "Widgets", "Home")</li>
+    <li>@Html.ActionLink("About", "About", "Home")</li>
+</ul>
+
+<h3>Phone</h3>
+<span>425.555.0100</span>
+
+<h3>Email</h3>
+<span><a href="mailto:General@example.com">tetratechdev@tetratech.com</a></span>
+@*</body>
+    </html>*@

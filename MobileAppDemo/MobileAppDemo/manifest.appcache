@@ -1,0 +1,35 @@
+CACHE MANIFEST
+# version 1
+      
+CACHE:
+/Views/Shared/_Layout.cshtml
+/Views/Shared/_LoginPartial.cshtml
+/Views/Shared/Error.cshtml
+/Views/Shared/_Layout.cshtml
+/Views/_ViewStart.cshtml
+
+/Views/Home/Index.cshtml
+/Views/Home/About.cshtml
+/Views/Home/Contact.cshtml
+/Views/Home/Widgets.cshtml
+
+/Content/jquery.mobile-1.4.2.css
+/Content/Site.css
+/Content/onoffline.css
+
+/Scripts/modernizr-2.6.2.min.js
+/Scripts/jquery-1.8.0.min.js
+/Scripts/jqt.js
+/Scripts/jquery-ui-1.8.24.min.js
+/Scripts/lawnchair.js
+/Scripts/zepto.min.js
+      
+FALLBACK:
+/Views/Error.cshtml
+      
+NETWORK:
+*
+      
+@{
+   // Layout = ;
+}
