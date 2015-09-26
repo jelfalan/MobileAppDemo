@@ -19,7 +19,7 @@ namespace MobileAppDemo
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+    
             bundles.Add(new ScriptBundle("~/bundles/jquerymobile").Include("~/Scripts/jquery.mobile*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));

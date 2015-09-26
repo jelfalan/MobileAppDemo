@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\apple.min.css" />
+    <Content Include="Content\chui-ios-3.9.2.min.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\ajax-loader.png" />
@@ -473,6 +474,7 @@
     <Content Include="Scripts\angular-localForage.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\backbone.js" />
+    <Content Include="Scripts\chui-3.9.2.min.js" />
     <Content Include="Scripts\CustomerViewModel.js" />
     <Content Include="Scripts\jqt.js" />
     <Content Include="Scripts\jqt.min.js" />

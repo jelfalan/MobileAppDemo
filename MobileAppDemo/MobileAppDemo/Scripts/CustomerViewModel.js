@@ -13,9 +13,30 @@
             data: ko.toJSON(this),
             contentType: 'application/json',
             success: function (result) {
-                $('#btnGetCustomers').click();
+                $('#btnGetCustomers').click(); //refresh the table view
             }
             });
+    }
+
+    self.deleteCustomer = function (cust) {
+        // The current item will be passed as the first parameter, so we know which customer to remove
+        var custId = parseInt(cust.ID);
+        alert("deleting customer:" + cust.Name + "; id: " + custId);
+        
+        $.ajax({
+                 url: "/Home/DeleteCust",
+           // url: '@Url.Action("DeleteCust","Home")',
+           // url: '<%= Url.Action("DeleteCust", "Home") %>',
+            type: 'post',
+            dataType: 'json',
+          //  cache: false,
+            async: false,
+            data: { id: custId } ,
+           // contentType: 'application/json',
+            success: function (result) {
+                $('#btnGetCustomers').click(); //refresh the table view
+            }
+        });
     }
 
 }
@@ -38,6 +59,6 @@ $(document).ready(function () {
     ko.applyBindings(new customerVM, document.getElementById('displayNode'));
     ko.applyBindings(new customer, document.getElementById('createNode'));
 
-    $('#btnGetCustomers').click();
+    $('#btnGetCustomers').click();//refresh on page load
 
 });

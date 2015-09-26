@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Contact";
- //  Layout = null;
+  // Layout = null;
 }
 @*<html manifest="~Views/Home/Manifest">
 <head>
@@ -21,27 +21,7 @@
 
     <body>*@
 <h2>Contact</h2>
-<script>
 
-    $(document).ready(function () {
-        var status = $(".onlineStatus");
-        if (isOnline()) {
-            status.text("Online");
-            status.
-                removeClass("offline").
-                addClass("online");
-        } else {
-            status.text("Offline");
-            status.
-                removeClass("online").
-                addClass("offline");
-        }
-    });
-
-    function isOnline() {
-        return navigator.onLine;
-    }
-</script>
 
 <ul data-role="listview" data-inset="true">
     <li data-role="list-divider">Navigation</li>

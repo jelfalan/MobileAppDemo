@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using MobileAppDemo.Models;
 using System.Data.Objects;
+using System.Diagnostics;
 
 namespace MobileAppDemo.Controllers
 {
@@ -47,7 +48,12 @@ namespace MobileAppDemo.Controllers
 
         // DELETE api/customer/5
         public void Delete(int id)
-        {
+      
+    {
+            Debug.WriteLine("recieved id: " + id);
+            Customer cust = Get(id);
+            CustomerRepository.DeleteCustomer(cust);
+
         }
     }
 }

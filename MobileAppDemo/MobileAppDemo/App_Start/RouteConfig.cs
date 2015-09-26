@@ -17,9 +17,15 @@ namespace MobileAppDemo
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "CRUDdemo", id = UrlParameter.Optional }
-       
-      );
+        );
 
+        //      routes.MapRoute(
+        //        name: "api-router",
+        //        url: "api/{controller}/{action}/{id}",
+        //        defaults: new { controller = "customer", action = "Delete", id = UrlParameter.Optional }
+        //);
+       
+               
         }
     }
 }

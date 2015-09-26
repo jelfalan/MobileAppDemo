@@ -33,6 +33,14 @@ namespace MobileAppDemo.Controllers
             return View();
         }
 
+        public void DeleteCust(int id)
+        {
+            Debug.WriteLine("It worked!  recieved id: " + id);
+            Customer cust = CustomerRepository.GetCustomers().Where((c) => c.ID == id).FirstOrDefault(); 
+            CustomerRepository.DeleteCustomer(cust);
+
+        }
+
         public ActionResult CRUDdemo()
         {
             List<SelectListItem> templateItems = new List<SelectListItem>();

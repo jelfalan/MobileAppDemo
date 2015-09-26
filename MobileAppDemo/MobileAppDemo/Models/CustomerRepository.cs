@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using MobileAppDemo.Models;
+using System.Diagnostics;
 
 namespace MobileAppDemo.Models
 {
+    //serves as an interface to make it cleaner to talk to backend db
     public class CustomerRepository
     {
      
@@ -24,6 +26,22 @@ namespace MobileAppDemo.Models
             TestDBContext _db = new TestDBContext();
             _db.Customers.Add(cust);
             _db.SaveChanges();
+        }
+
+        public static void DeleteCustomer(Customer cust)
+        {
+            
+            TestDBContext _db = new TestDBContext();
+
+            try
+            {
+                _db.Customers.Remove(cust);
+                _db.SaveChanges();
+            }
+            catch
+            {
+               Debug.WriteLine("failed on delete");
+            }
         }
     }
 }
