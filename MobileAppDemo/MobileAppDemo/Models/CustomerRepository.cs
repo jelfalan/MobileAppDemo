@@ -28,20 +28,38 @@ namespace MobileAppDemo.Models
             _db.SaveChanges();
         }
 
-        public static void DeleteCustomer(Customer cust)
-        {
+        //public static void DeleteCustomer(Customer cust)
+        //{
             
+        //    TestDBContext _db = new TestDBContext();
+
+        //    try
+        //    {
+        //        _db.Customers.Remove(cust);
+        //        _db.SaveChanges();
+        //    }
+        //    catch
+        //    {
+        //       Debug.WriteLine("failed on delete");
+        //    }
+        //}
+        public static void DeleteCustomer(int id)
+        {
+
             TestDBContext _db = new TestDBContext();
 
             try
             {
+                Customer cust = _db.Customers.Where((c) => c.ID == id).FirstOrDefault();
+                Debug.WriteLine("deleting cust: " + cust.ID + "; Name: " + cust.Name);
                 _db.Customers.Remove(cust);
                 _db.SaveChanges();
             }
             catch
             {
-               Debug.WriteLine("failed on delete");
+                Debug.WriteLine("failed on delete");
             }
         }
+
     }
 }

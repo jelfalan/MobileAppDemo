@@ -36,8 +36,8 @@ namespace MobileAppDemo.Controllers
         public void DeleteCust(int id)
         {
             Debug.WriteLine("It worked!  recieved id: " + id);
-            Customer cust = CustomerRepository.GetCustomers().Where((c) => c.ID == id).FirstOrDefault(); 
-            CustomerRepository.DeleteCustomer(cust);
+         //   Customer cust = CustomerRepository.GetCustomers().Where((c) => c.ID == id).FirstOrDefault(); 
+            CustomerRepository.DeleteCustomer(id);
 
         }
 

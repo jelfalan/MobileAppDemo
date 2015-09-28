@@ -47,12 +47,20 @@ namespace MobileAppDemo.Controllers
         }
 
         // DELETE api/customer/5
-        public void Delete(int id)
+    //    public void Delete(int id)
       
-    {
-            Debug.WriteLine("recieved id: " + id);
-            Customer cust = Get(id);
-            CustomerRepository.DeleteCustomer(cust);
+    //{
+    //        Debug.WriteLine("recieved id: " + id);
+    //        Customer cust = Get(id);
+    //        CustomerRepository.DeleteCustomer(id);
+
+    //    }
+
+        public void DeleteCust(int id)
+        {
+            Debug.WriteLine("It worked!  recieved id: " + id);
+            //   Customer cust = CustomerRepository.GetCustomers().Where((c) => c.ID == id).FirstOrDefault(); 
+            CustomerRepository.DeleteCustomer(id);
 
         }
     }

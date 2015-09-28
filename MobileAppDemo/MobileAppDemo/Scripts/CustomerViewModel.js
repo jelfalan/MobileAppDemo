@@ -24,7 +24,7 @@
         alert("deleting customer:" + cust.Name + "; id: " + custId);
         
         $.ajax({
-                 url: "/Home/DeleteCust",
+                 url: "/customer/DeleteCust",
            // url: '@Url.Action("DeleteCust","Home")',
            // url: '<%= Url.Action("DeleteCust", "Home") %>',
             type: 'post',
