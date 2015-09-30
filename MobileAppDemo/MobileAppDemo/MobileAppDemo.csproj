@@ -153,6 +153,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationApiController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,10 +174,23 @@
     <Compile Include="Migrations\201509242312412_Customers1.Designer.cs">
       <DependentUpon>201509242312412_Customers1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509282144204_locations.cs" />
+    <Compile Include="Migrations\201509282144204_locations.Designer.cs">
+      <DependentUpon>201509282144204_locations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509282318563_locations_v1.cs" />
+    <Compile Include="Migrations\201509282318563_locations_v1.Designer.cs">
+      <DependentUpon>201509282318563_locations_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509291826473_locations_v2.cs" />
+    <Compile Include="Migrations\201509291826473_locations_v2.Designer.cs">
+      <DependentUpon>201509291826473_locations_v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerRepository.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Template.cs" />
     <Compile Include="Models\TestDBContext.cs" />
@@ -498,6 +513,7 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\lawnchair.js" />
     <Content Include="Scripts\localforage.js" />
+    <Content Include="Scripts\WellLocationViewModel.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\offline.js" />
     <Content Include="Scripts\onlineStatus.js" />
@@ -538,6 +554,7 @@
     <Content Include="Views\Home\Customers.cshtml" />
     <Content Include="Views\Shared\CustomerList.cshtml" />
     <Content Include="Views\Shared\CreateCustomer.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\PDFs\" />
@@ -557,6 +574,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509242312412_Customers1.resx">
       <DependentUpon>201509242312412_Customers1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509282144204_locations.resx">
+      <DependentUpon>201509282144204_locations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509282318563_locations_v1.resx">
+      <DependentUpon>201509282318563_locations_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509291826473_locations_v2.resx">
+      <DependentUpon>201509291826473_locations_v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

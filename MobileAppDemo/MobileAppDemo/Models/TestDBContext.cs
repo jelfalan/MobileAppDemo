@@ -12,6 +12,6 @@ namespace MobileAppDemo.Models
         public DbSet<Template> Templates { get; set; }
         public DbSet<Option> Options { get; set; }
         public DbSet<Customer> Customers { get; set; }
-
+        public DbSet<Location> Locations { get; set; }
     }
 }

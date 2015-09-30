@@ -148,3 +148,6 @@ C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\M
 C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.csproj.GenerateResource.Cache
 C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.dll
 C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.pdb
+C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.Migrations.locations.resources
+C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.Migrations.locations_v1.resources
+C:\Users\jesse.elfalan\Documents\Visual Studio 2012\Projects\MobileAppDemo_git\MobileAppDemo\MobileAppDemo\obj\Debug\MobileAppDemo.Migrations.locations_v2.resources
