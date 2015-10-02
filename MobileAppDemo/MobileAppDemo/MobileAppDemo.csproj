@@ -491,6 +491,7 @@
     <Content Include="Scripts\backbone.js" />
     <Content Include="Scripts\chui-3.9.2.min.js" />
     <Content Include="Scripts\CustomerViewModel.js" />
+    <Content Include="Scripts\init_locations.js" />
     <Content Include="Scripts\jqt.js" />
     <Content Include="Scripts\jqt.min.js" />
     <Content Include="Scripts\jqtouch-jquery.js" />
@@ -513,6 +514,7 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\lawnchair.js" />
     <Content Include="Scripts\localforage.js" />
+    <Content Include="Scripts\store.min.js" />
     <Content Include="Scripts\WellLocationViewModel.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\offline.js" />

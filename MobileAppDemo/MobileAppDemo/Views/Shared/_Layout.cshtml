@@ -26,9 +26,12 @@
     @Scripts.Render("~/Scripts/lawnchair.js")
     @Scripts.Render("~/Scripts/offline.js")
 
+
     @Scripts.Render("~/Scripts/knockout-3.3.0.js");
     
-
+    
+    @Scripts.Render("~/Scripts/store.min.js");
+     @*@Scripts.Render("~/Scripts/init_locations.js");*@
 
     @*@Scripts.Render("~/Scripts/underscore.js");
     @Scripts.Render("~/Scripts/backbone.js");*@
@@ -55,6 +58,9 @@
                 Offline.check();
         }
         setInterval(run, 5000);
+
+        //initialize lawnchair store
+        lawnchair_store = new Lawnchair({ name: 'Locations' }, function (lawnchair_store) { }); //global scoped variable
 
         //angular init, module config
         //angular.module('yourModule', ['LocalForageModule']);

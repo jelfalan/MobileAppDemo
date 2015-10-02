@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Locations";
 }
+ <script src="~/Scripts/init_locations.js"></script>
 <script src="~/Scripts/WellLocationViewModel.js"></script>
 <h2>Locations</h2>
 @*<div data-role ="page" >
@@ -11,53 +12,6 @@
 
     </div>*@
 
-
-@*<div>
-  <h3>Select a Location: </h3>
-@Html.DropDownList("Locations", ViewData["LocationItems"] as List<SelectListItem>,"-Select Location Type-", new { id = "locationsList"})
- </div>*@
-<script>
-   
-    $(document).ready(function () {
-
-        var store = new Lawnchair({ name: 'Locations' }, function (store) { });
-        
-        var Locations = @Html.Raw(Json.Encode(ViewData["Locations"]));
-        var key = "";
-       
-        for (var i = 0; i < Locations.length; i++) {
-          
-            key = "loc_" + Locations[i].ID;
-            
-            var newLocation = {
-                key : key,
-                ID : Locations[i].ID,
-                LocationID : Locations[i].LocationID,
-                Dry : Locations[i].Dry,
-                Collected : Locations[i].Collected,
-                Skipped : Locations[i].Skipped,
-                Comment : Locations[i].Comment,
-                timestamp : Locations[i].timestamp,
-                geostamp_lat : Locations[i].geostamp_lat,
-                geostamp_lon : Locations[i].geostamp_lon
-            };
-            
-            console.log("Saving newlocation with key: " + newLocation.key);
-
-            store.save(newLocation);
-        };
-
-        console.log("fetching with key:" + key);
-        store.get(key, function(result){
-            console.log("ret obj: " + result.LocationID);    
-        });
-        
-        
-        //        console.log(JSON.stringify(Locations));
-        //   localStorage.setItem("locs", Locations);
-    });
-
-</script>
 
 <div id="displayNode">
     <table table data-role="table" id="table-custom-2" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive ui-table ui-table-columntoggle" data-column-btn-theme="b" data-column-popup-theme="a">
@@ -90,3 +44,5 @@
     <br />
     <input type="button" id="btnGetLocations" value="Get Locations" data-bind="click: getLocations" />
 </div>
+
+
