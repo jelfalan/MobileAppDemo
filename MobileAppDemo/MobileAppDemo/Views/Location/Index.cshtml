@@ -1,8 +1,8 @@
 ﻿@{
     ViewBag.Title = "Locations";
 }
- <script src="~/Scripts/init_locations.js"></script>
-<script src="~/Scripts/WellLocationViewModel.js"></script>
+@* <script src="~/Scripts/init_locations.js"></script>*@
+@*<script src="~/Scripts/WellLocationViewModel.js"></script>*@
 <h2>Locations</h2>
 @*<div data-role ="page" >
 <div data-role="panel" id ="panel">
@@ -44,5 +44,13 @@
     <br />
     <input type="button" id="btnGetLocations" value="Get Locations" data-bind="click: getLocations" />
 </div>
+
+<script>
+    $(window).load(function(){
+      //  $.when(setBindings()).then($("#btnGetLocations").click()).done(console.log("button fired")); //refresh view on page load
+      //  setBindings();
+    });
+
+</script>
 
 

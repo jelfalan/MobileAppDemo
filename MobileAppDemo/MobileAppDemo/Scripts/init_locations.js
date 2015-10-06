@@ -1,70 +1,89 @@
-﻿$(document).ready(function () {
+﻿function initLocations() {
+    console.log("initializing locations...");
+    $.getJSON("/api/LocationApi/", function (data) {
+        $.when(mapper("Locations", data)).done(console.log("Locations have been initialized"));
+    });
+    
+    //get sample is in WellLocationViewModel -> locationVM()
+};
 
-    // var store = new Lawnchair({ name: 'Locations' }, function (store) { });
+function checkStore(str, callBack1, callBack2) {
+    if (store.get(str) == null) {
+        callBack1(); //init
+    } 
+        console.log("locations already initialized");
+        callBack2(); //set ko bindings
+    };
 
-    //initLocations = function (Locations){
-
-    //  //  var Locations = loc;
-    //    var key = "";
-
-    //    for (var i = 0; i < Locations.length; i++) {
-
-    //        key = "loc_" + Locations[i].ID;
-
-    //        var newLocation = {
-    //            key: key,
-    //            type: 'Location',
-    //            ID : Locations[i].ID,
-    //            LocationID : Locations[i].LocationID,
-    //            Dry : Locations[i].Dry,
-    //            Collected : Locations[i].Collected,
-    //            Skipped : Locations[i].Skipped,
-    //            Comment : Locations[i].Comment,
-    //            timestamp : Locations[i].timestamp,
-    //            geostamp_lat : Locations[i].geostamp_lat,
-    //            geostamp_lon : Locations[i].geostamp_lon
-    //        };
-
-    //        console.log("Saving newlocation with key: " + newLocation.key);
-
-    //        //lawnchair_store.save(newLocation);
-    //        store.set(newLocation.key,newLocation);
-
-    //    };
-    //}
-
-    function initLocations() {
-        console.log("initializing locations...");
-        $.getJSON("/api/LocationApi/", function (data) {
-            mapper("Locations", data);
+//abstracted helper function for creating a new entity/object store
+function mapper(entityName, data) {
+    var wrapper = { 'map': '' }; //need a key for the array/map or else store returns undefined
+    var mapObj = {}; //simplifies returning the object by id instead of looping thru an array
+    console.log("data length: " + data.length);
+    for (var i = 0; i < data.length; i++) {
+        var obj = {};
+        $.each(data[i], function (key, value) { //add each property
+            obj[key] = value;
         });
-        //get sample is in WellLocationViewModel -> locationVM()
+        console.log("new obj: " + JSON.stringify(obj));
+        mapObj[obj.ID] = obj;
     };
+    wrapper.map = mapObj;//save the map in the wrapper
+    store.set(entityName, JSON.stringify(wrapper)); //store the collection in localstorage
+};
 
-    function checkStore(str, callBack) {
-        if (store.get(str) == null) { callBack(); }
-        else { console.log(str + " already initialized") } //debug
-    };
 
-    //abstracted helper function for creating a new entity/object store
-    function mapper(entityName, data) {
-        var wrapper = { 'map': '' }; //need a key for the array/map or else store returns undefined
-        var mapObj = {}; //simplifies returning the object by id instead of looping thru an array
+function well_location(id, locationid, dry, collected, skipped, comment, timestamp) {
+    var self = this;
 
-        for (var i = 0; i < data.length; i++) {
-            var obj = {};
-            $.each(data[i], function (key, value) { //add each property
-                obj[key] = value;
+    self.ID = id;
+    self.LocationID = locationid;
+    self.Dry = dry;
+    self.Collected = collected;
+    self.Skipped = skipped;
+    self.Comment = comment;
+    self.Timestamp = timestamp;
+
+};
+
+//uses data from localstorage
+function locationVM() {
+    var self = this;
+
+    self.allLocations = ko.observableArray([]);
+    self.getLocations = function () {
+
+        self.allLocations.removeAll();
+        var retWrapper = {};
+        var objMap = {};
+        if (store.get("Locations") != null) {
+            retWrapper = JSON.parse(store.get("Locations"));
+            objMap = retWrapper.map;
+            console.log(objMap);
+
+            $.each(objMap, function (key, value) {
+                self.allLocations.push(new well_location(value.ID, value.LocationID, value.Dry, value.Collected, value.Skipped, value.Comment, value.Timestamp));
             });
-            console.log("new obj: " + JSON.stringify(obj));
-            mapObj[obj.ID] = obj;
-        };
-        wrapper.map = mapObj;
-        store.set(entityName, JSON.stringify(wrapper)); //store the new entity in localstorage
-    }
+        }
+        else {
+            console.log(Error("locations unavailable"));
+        }
+    };
 
+};
+
+function setBindings() {
+    $.when(ko.applyBindings(new locationVM, document.getElementById('displayNode'))).then(console.log("location bindings set"));   
+};
+
+$(document).ready(function () {
     //Main Checks
-    checkStore("Locations", initLocations); //check to see of locations have been created locally
+    $.when(checkStore("Locations", initLocations, setBindings)).done(//check to see of locations have been created locally
+    setTimeout(function () {
+        $('#btnGetLocations').click(); //btn must be drawn first to click, delay by .1 sec
+    }, 100));  
 
 });
+
+
 
