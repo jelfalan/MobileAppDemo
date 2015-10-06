@@ -31,13 +31,14 @@
         <tbody data-bind="foreach: allLocations">
             <tr>
                 <td data-bind="text: ID"></td>
-                <td data-bind="text: LocationID"></td>
+               @* <td data-bind="text: LocationID"></td>*@
+                <td><Input type="text" data-bind="textInput: LocationID"/></td>
                 <td data-bind="text: Collected"></td>
                 <td data-bind="text: Dry"></td>
                 <td data-bind="text: Skipped"></td>
                 <td data-bind="text: Comment"></td>
                 <td data-bind="text: Timestamp"></td>
-
+                
             </tr>
         </tbody>
     </table>

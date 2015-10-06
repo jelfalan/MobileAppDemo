@@ -32,12 +32,14 @@ function mapper(entityName, data) {
     store.set(entityName, JSON.stringify(wrapper)); //store the collection in localstorage
 };
 
-
+//**************************************************************
+//LocationsViewModel
+//***************************
 function well_location(id, locationid, dry, collected, skipped, comment, timestamp) {
     var self = this;
 
     self.ID = id;
-    self.LocationID = locationid;
+    self.LocationID = ko.observable(locationid);
     self.Dry = dry;
     self.Collected = collected;
     self.Skipped = skipped;
@@ -66,15 +68,16 @@ function locationVM() {
             });
         }
         else {
-            console.log(Error("locations unavailable"));
+            console.log(Error("locations unavailable, could not be parsed"));
         }
     };
-
 };
 
 function setBindings() {
     $.when(ko.applyBindings(new locationVM, document.getElementById('displayNode'))).then(console.log("location bindings set"));   
 };
+
+//************************************************
 
 $(document).ready(function () {
     //Main Checks
